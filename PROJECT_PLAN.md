@@ -1,3 +1,5 @@
+[🌐 EN VERSION](PROJECT_PLAN_EN.md)
+
 # AI Style Studio — 개발 계획서 (PROJECT PLAN)
 
 ## 1. 프로젝트 개요

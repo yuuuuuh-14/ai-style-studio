@@ -1,3 +1,5 @@
+[🌐 EN VERSION](MILESTONE_EN.md)
+
 # AI Style Studio — 마일스톤 (MILESTONES)
 
 ## Milestone 0: 프로젝트 초기 설정

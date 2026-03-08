@@ -1,117 +1,119 @@
+[🇰🇷 한국어 문서](README_KR.md)
+
 # 🎨 AI Style Studio
 
-> Neural Style Transfer 학습 및 체험 플랫폼
+> Neural Style Transfer Learning & Experience Platform
 
-AI Style Studio는 Neural Style Transfer의 원리를 학습하고 직접 체험할 수 있는 웹 애플리케이션입니다. Gatys 방식의 최적화 기반 스타일 변환과 사전학습 모델을 활용한 실시간 Fast Style Transfer를 모두 지원합니다.
+AI Style Studio is a web application for learning and hands-on experimentation with Neural Style Transfer. It supports both Gatys-method optimization-based style transfer and real-time Fast Style Transfer using pre-trained models.
 
 ---
 
-## ✨ 주요 기능
+## ✨ Key Features
 
 ### 🖼️ Gatys Style Transfer
-- 콘텐츠/스타일 이미지 업로드 → VGG19 기반 최적화로 스타일 변환
-- Content Weight, Style Weight, Steps, Learning Rate 조절
-- SSE를 통한 실시간 진행률 및 중간 프리뷰 표시
-- 원본 / 스타일 / 결과 3분할 비교 뷰
+- Upload content/style images → Style transfer via VGG19-based optimization
+- Adjust Content Weight, Style Weight, Steps, Learning Rate
+- Real-time progress and intermediate preview via SSE
+- Original / Style / Result 3-panel comparison view
 
-### ⚡ Fast Style Transfer (실시간)
-- 사전학습 SavedModel을 활용한 즉시 스타일 적용 (< 1초)
-- 6종 스타일 프리셋: Starry Night, The Scream, Mosaic, Candy, Udnie, Rain Princess
-- **웹캠 실시간 변환** — 5~10 FPS (320×240, CPU)
+### ⚡ Fast Style Transfer (Real-time)
+- Instant style application using pre-trained SavedModel (< 1 sec)
+- 6 style presets: Starry Night, The Scream, Mosaic, Candy, Udnie, Rain Princess
+- **Live webcam transfer** — 5~10 FPS (320×240, CPU)
 
-### 📊 학습 대시보드
-- VGG19 CNN 구조 인터랙티브 시각화
-- 레이어별 특징 맵 히트맵
-- Gram Matrix 비교 뷰
-- Content/Style/Total Loss 변화 실시간 차트
+### 📊 Learning Dashboard
+- VGG19 CNN interactive structure visualization
+- Per-layer feature map heatmaps
+- Gram Matrix comparison view
+- Real-time Content/Style/Total Loss charts
 
-### 🖼️ 갤러리
-- 변환 결과물 자동 저장 및 조회
-- 정렬/필터, 상세 모달, 다운로드/삭제
+### 🖼️ Gallery
+- Auto-save and browse transfer results
+- Sort/filter, detail modal, download/delete
 
 ---
 
-## 🛠️ 기술 스택
+## 🛠️ Tech Stack
 
-| 구분 | 기술 |
-|------|------|
+| Category | Technology |
+|----------|-----------|
 | **Backend** | Flask 3+ · Ariadne GraphQL · SSE |
 | **Frontend** | Angular 17 (Standalone) · Webpack 5 · Angular Material |
 | **ML** | Tensorflow 2.15+ (CPU · SavedModel) |
-| **영상 처리** | Pillow (PIL) 11+ |
-| **상태 관리** | Angular Signals |
-| **인증** | OAuth2 |
-| **배포** | Docker Compose (Backend) · Netlify (Frontend) · GitHub Actions CI/CD |
+| **Image Processing** | Pillow (PIL) 11+ |
+| **State Management** | Angular Signals |
+| **Auth** | OAuth2 |
+| **Deployment** | Docker Compose (Backend) · Netlify (Frontend) · GitHub Actions CI/CD |
 
 ---
 
-## 📁 프로젝트 구조
+## 📁 Project Structure
 
 ```
 ai-style-studio/
 ├── docker-compose.yml
 ├── backend/
-│   ├── main.py                  # Flask & GraphQL 엔트리포인트
-│   ├── config.py                # 설정
-│   ├── schema.graphql           # GraphQL 스키마
-│   ├── api/                     # 엔드포인트 (style_transfer, webcam, gallery, learn)
-│   ├── services/                # 비즈니스 로직 (gatys, fast, task_manager)
-│   ├── models/                  # 사전학습 모델 (SavedModel)
-│   ├── presets/                 # 프리셋 스타일 이미지 (6종)
-│   └── storage/                 # 런타임 파일 (uploads, results, previews)
+│   ├── main.py                  # Flask & GraphQL entry point
+│   ├── config.py                # Configuration
+│   ├── schema.graphql           # GraphQL schema
+│   ├── api/                     # Endpoints (style_transfer, webcam, gallery, learn)
+│   ├── services/                # Business logic (gatys, fast, task_manager)
+│   ├── models/                  # Pre-trained models (SavedModel)
+│   ├── presets/                 # Preset style images (6 types)
+│   └── storage/                 # Runtime files (uploads, results, previews)
 │
 ├── frontend/
 │   └── src/
 │       ├── app/
-│       │   ├── core/            # 싱글톤 서비스 (API, SSE)
-│       │   ├── features/        # 기능 모듈 (style-transfer, webcam, gallery)
-│       │   └── shared/          # 공통 UI 컴포넌트
+│       │   ├── core/            # Singleton services (API, SSE)
+│       │   ├── features/        # Feature modules (style-transfer, webcam, gallery)
+│       │   └── shared/          # Shared UI components
 │       ├── assets/
 │       └── styles.scss
 │
-└── docs/                        # PRD, 설치 가이드, 학생용 가이드
+└── docs/                        # PRD, setup guide, student guide
 ```
 
 ---
 
-## 🚀 시작하기
+## 🚀 Getting Started
 
-### 사전 요구사항
+### Prerequisites
 - Python 3.8+
 - Node.js 18+
 - Docker & Docker Compose
 
-### Backend 실행
+### Run Backend
 
 ```bash
-# 가상 환경 생성 및 활성화
+# Create and activate virtual environment
 cd backend
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 
-# 의존성 설치
+# Install dependencies
 pip install -r requirements.txt
 
-# 사전학습 모델 다운로드
+# Download pre-trained models
 bash download_models.sh
 
-# 서버 실행
+# Start server
 python main.py
 ```
 
-### Frontend 실행
+### Run Frontend
 
 ```bash
 cd frontend
 
-# 의존성 설치
+# Install dependencies
 npm install
 
-# 개발 서버 실행
+# Start dev server
 npm run dev
 ```
 
-### Docker Compose (전체)
+### Docker Compose (Full Stack)
 
 ```bash
 docker-compose up --build
@@ -126,59 +128,59 @@ docker-compose up --build
 POST http://localhost:8000/graphql
 ```
 
-**주요 쿼리/뮤테이션:**
-- `getModels` — 사전학습 모델 목록 조회
-- `getGallery(page, limit)` — 갤러리 조회
-- `startGatysTransfer(input)` — Gatys 변환 시작 → taskId 반환
-- `processWebcamFrame(image, modelId)` — 웹캠 프레임 처리
+**Key Queries/Mutations:**
+- `getModels` — List pre-trained models
+- `getGallery(page, limit)` — Query gallery
+- `startGatysTransfer(input)` — Start Gatys transfer → returns taskId
+- `processWebcamFrame(image, modelId)` — Process webcam frame
 
 ### SSE
-- `GET /api/style-transfer/gatys/{task_id}/status` — Gatys 진행률 스트리밍
-- `GET /sse/webcam` — 웹캠 실시간 이벤트
+- `GET /api/style-transfer/gatys/{task_id}/status` — Gatys progress streaming
+- `GET /sse/webcam` — Webcam real-time events
 
 ---
 
-## ⚡ 성능 목표
+## ⚡ Performance Targets
 
-| 항목 | 목표 |
-|------|------|
-| Gatys 변환 (400px, 300step) | 5~10분 (CPU) |
-| Fast Style Transfer | < 1초 |
-| 웹캠 실시간 변환 | 5~10 FPS (320×240) |
-| SSE 지연시간 | < 200ms |
-| 프론트엔드 초기 로딩 | < 3초 |
-
----
-
-## 🗺️ 로드맵
-
-- [x] **M0** — 프로젝트 초기 설정
-- [ ] **M1** — Backend 핵심 기능 (Gatys/Fast Style Transfer, GraphQL, SSE)
-- [ ] **M2** — Frontend 핵심 기능 (스타일 변환 UI, 웹캠 실시간 UI)
-- [ ] **M3** — 학습 대시보드 + 갤러리
-- [ ] **M4** — 통합·최적화·배포
-
-> 자세한 내용은 [MILESTONE.md](./MILESTONE.md) 및 [GitHub Milestones](https://github.com/yuuuuuh-14/ai-style-studio/milestones) 참조
+| Item | Target |
+|------|--------|
+| Gatys transform (400px, 300 steps) | 5~10 min (CPU) |
+| Fast Style Transfer | < 1 sec |
+| Webcam real-time transfer | 5~10 FPS (320×240) |
+| SSE latency | < 200ms |
+| Frontend initial load | < 3 sec |
 
 ---
 
-## 📄 문서
+## 🗺️ Roadmap
 
-- [PRD.md](./PRD.md) — 제품 요구사항 정의서
-- [PROJECT_PLAN.md](./PROJECT_PLAN.md) — 상세 개발 계획서
-- [MILESTONE.md](./MILESTONE.md) — 마일스톤 및 이슈 목록
+- [x] **M0** — Project initialization
+- [ ] **M1** — Backend core (Gatys/Fast Style Transfer, GraphQL, SSE)
+- [ ] **M2** — Frontend core (Style transfer UI, Webcam real-time UI)
+- [ ] **M3** — Learning Dashboard + Gallery
+- [ ] **M4** — Integration, optimization & deployment
+
+> See [MILESTONE.md](./MILESTONE.md) and [GitHub Milestones](https://github.com/yuuuuuh-14/ai-style-studio/milestones) for details
 
 ---
 
-## 🏗️ 실행 환경 제약
+## 📄 Documentation
 
-- **CPU 환경만 지원** (GPU 미사용)
-- 이미지 최대 크기: **400px**
-- 동시 Gatys 변환 태스크: **1개**
-- 웹캠 해상도: **320×240**
+- [PRD.md](./PRD.md) / [PRD_EN.md](./PRD_EN.md) — Product Requirements Document
+- [PROJECT_PLAN.md](./PROJECT_PLAN.md) / [PROJECT_PLAN_EN.md](./PROJECT_PLAN_EN.md) — Development Plan
+- [MILESTONE.md](./MILESTONE.md) / [MILESTONE_EN.md](./MILESTONE_EN.md) — Milestones & Issues
+
+---
+
+## 🏗️ Runtime Constraints
+
+- **CPU-only** (no GPU)
+- Max image size: **400px**
+- Concurrent Gatys tasks: **1**
+- Webcam resolution: **320×240**
 
 ---
 
 ## 📜 License
 
-This project is for educational purposes.
+This project is licensed under the [GNU Lesser General Public License v2.1](./LICENSE).
