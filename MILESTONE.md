@@ -9,7 +9,7 @@
 ### Issues
 1. **저장소 초기화 및 기본 문서 작성** — README.md, .gitignore, LICENSE 등 기본 파일 생성
 2. **Backend 프로젝트 구조 생성** — Flask boilerplate, requirements.txt, config.py, 디렉토리 구조
-3. **Frontend 프로젝트 구조 생성** — Angular CLI Standalone + Webpack 5 설정
+3. **Frontend 프로젝트 구조 생성** — Angular CLI NgModule + Webpack 5 설정(설정된 frontend에서 standalone to ngmodule & vite to webpack)
 4. **Docker Compose 기본 세팅** — Backend 컨테이너 설정, docker-compose.yml
 5. **CI/CD 파이프라인 초안** — GitHub Actions 워크플로우 (lint, test, build)
 6. **Linting/Formatting 설정** — Backend(Black, Flake8), Frontend(ESLint, Prettier)
