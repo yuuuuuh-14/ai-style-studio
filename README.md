@@ -183,4 +183,4 @@ POST http://localhost:8000/graphql
 
 ## 📜 License
 
-This project is licensed under the [GNU Lesser General Public License v2.1](./LICENSE).
+This project is licensed under the [GNU Lesser General Public License v3.0](./LICENSE).
