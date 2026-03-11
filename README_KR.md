@@ -183,4 +183,18 @@ POST http://localhost:8000/graphql
 
 ## 📜 License
 
-This project is licensed under the [GNU Lesser General Public License v3.0](./LICENSE).
+This project is licensed under the [GNU Affero General Public License v3.0](./LICENSE).
+
+---
+
+### 🚩 오픈소스 이용 조건
+- 이 코드를 사용하거나, 수정하여 **네트워크 서비스(SaaS)**를 제공하는 경우, 반드시 **전체 소스코드를 AGPL-3.0 라이선스로 공개**해야 합니다.
+- 단순히 내부에서 사용하는 것을 넘어 외부 사용자가 접속하는 웹/앱 서비스에 포함될 경우 공개 의무가 즉시 발생합니다.
+
+---
+
+### 💰 상업적 이용 및 라이선스 구매 (Dual Licensing)
+소스코드를 공개하고 싶지 않거나, 기업 내부 보안 규정상 AGPL-3.0 사용이 불가능한 경우 **상용 라이선스(Commercial License)**를 별도로 구매해야 합니다.
+
+- **문의**: youryuha14@icloud.com
+- **혜택**: 소스코드 공개 의무 면제, 기술 지원, 별도의 보증 제공
