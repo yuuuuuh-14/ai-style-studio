@@ -183,4 +183,17 @@ POST http://localhost:8000/graphql
 
 ## 📜 License
 
-This project is licensed under the [GNU Lesser General Public License v3.0](./LICENSE).
+This project is licensed under the [GNU Affero General Public License v3.0](./LICENSE).
+
+---
+
+## 🚩 Open Source Terms & Conditions
+If you use or modify this code to provide a Network Service (SaaS), you must release your entire source code under the same AGPL-3.0 license.
+The obligation to disclose source code applies immediately if the project is included in a web/app service accessible by external users, beyond simple internal use.
+
+---
+
+## 💰 Commercial Usage & Dual Licensing
+If you do not wish to disclose your source code or if your corporate security policies prohibit the use of AGPL-3.0, you must purchase a separate Commercial License.
+Inquiries: youryuha14@icloud.com
+Benefits: Exemption from source code disclosure, technical support, and provided warranties.
