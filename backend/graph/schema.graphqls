@@ -1,0 +1,66 @@
+type ModelInfo {
+  id: ID!
+  name: String!
+  description: String
+  layers: [String!]!
+}
+
+type StyleImage {
+  id: ID!
+  name: String!
+  thumbnailPath: String!
+}
+
+type InceptionLayer {
+  name: String!
+  role: String!
+}
+
+type InceptionInfo {
+  description: String!
+  contentLayer: String!
+  styleLayers: [String!]!
+  allLayers: [InceptionLayer!]!
+}
+
+type GalleryItem {
+  id: ID!
+  task_id: String!
+  resultUrl: String!
+  contentUrl: String!
+  styleUrl: String!
+  createdAt: String!
+}
+
+type StyleTransferResponse {
+  taskId: ID!
+  status: String!
+}
+
+type StyledFrame {
+  taskId: ID!
+  styledImage: String! # base64
+}
+
+type Query {
+  getModels: [ModelInfo!]!
+  getStyleImages: [StyleImage!]!
+  getInceptionInfo: InceptionInfo!
+  getGallery(page: Int, limit: Int): [GalleryItem!]!
+  getFeatureMaps(taskId: ID!, layerName: String!): [String!]!
+  getGramMatrix(taskId: ID!, layerName: String!): [[Float!]!]!
+}
+
+input StyleTransferInput {
+  contentImagePath: String!
+  styleImageId: String!
+  contentWeight: Float!
+  styleWeight: Float!
+  iterations: Int!
+}
+
+type Mutation {
+  startGatysTransfer(input: StyleTransferInput!): StyleTransferResponse!
+  processWebcamFrame(image: String!, modelId: String!): StyledFrame!
+  saveToGallery(taskId: ID!): GalleryItem!
+}
